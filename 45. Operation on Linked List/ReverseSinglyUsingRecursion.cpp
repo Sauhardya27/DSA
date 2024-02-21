@@ -130,20 +130,34 @@ void print(Node* h){
 	cout << endl;
 }
 
-void reverse(Node* &h, Node* curr, Node* prev){
+void reverse_1(Node* &h, Node* curr, Node* prev){
 	if(curr == NULL){
 		h = prev;
 		return;
 	}
 	Node* forward = curr->next;
-	reverse(h, forward, curr);
+	reverse_1(h, forward, curr);
 	curr->next = prev;
 }
 
-void reverseLinkedList(Node* &h){
+void reverseLinkedList_1(Node* &h){
 	Node* prev = NULL;
 	Node* curr = h;
-	reverse(h, curr, prev);
+	reverse_1(h, curr, prev);
+}
+
+Node* reverse_2(Node* &h){
+	if(h == NULL || h->next == NULL)
+		return h;
+
+	Node* newHead = reverse_2(h->next);
+	h->next->next = h;
+	h->next = NULL;
+	return newHead;
+}
+
+void reverseLinkedList_2(Node* &h){
+	h = reverse_2(h);
 }
 
 int main(){
@@ -159,7 +173,7 @@ int main(){
 	// DeleteAtTail(h, t);
 	// DeleteAtPos(h, 10);
 	// print(h);
-	reverseLinkedList(h);
+	reverseLinkedList_2(h);
 	cout << "Linked List After Reversal: ";
 	print(h);
 	return 0;
