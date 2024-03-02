@@ -70,6 +70,16 @@ Node* getStartingNode(Node* head){
 	return slow;
 }
 
+void removeLoop(Node* head){
+	Node* startingNode = getStartingNode(head);
+	Node* temp = startingNode;
+
+	while(temp->next != startingNode)
+		temp = temp->next;
+
+	temp->next = NULL;
+}
+
 void print(Node *head) {
     while (head != NULL) {
         cout << head->data << " ";
@@ -87,9 +97,10 @@ int main(){
 	InsertAtTail(head, tail, 7);
 	InsertAtTail(head, tail, 9);
 	InsertAtTail(head, tail, 2);
-	// print(head);
+	print(head);
 
-	// tail->next = head->next->next;
+	tail->next = head->next->next;
+	
 
 	// if(detectLoop(head)){
 	// 	cout << "Loop is present in the linked list" << endl;
@@ -106,5 +117,9 @@ int main(){
 	}
 
 	cout << "Starting node: " << getStartingNode(head)->data << endl;
+
+	removeLoop(head);
+	cout << "Linked list after removal of loop: ";
+	print(head);
 	return 0;
 }
