@@ -30,6 +30,24 @@ bool detectLoop(Node* head){
 	return false;
 }
 
+Node* floydCycleDetect(Node* head){
+	if(head == NULL)
+		return NULL;
+
+	Node *slow = head, *fast = head;
+	while(slow != NULL && fast != NULL){
+		fast = fast->next;
+		if(fast != NULL)
+			fast = fast->next;
+
+		slow = slow->next;
+
+		if(slow == fast)
+			return slow;
+	}
+	return NULL;
+}
+
 void InsertAtTail(Node* &h, Node* &t, int data){
 	if(!h){
 		h = new Node(data);
@@ -60,9 +78,16 @@ int main(){
 	InsertAtTail(head, tail, 2);
 	// print(head);
 
-	// tail->next = head->next->next;
+	tail->next = head->next->next;
 
-	if(detectLoop(head)){
+	// if(detectLoop(head)){
+	// 	cout << "Loop is present in the linked list" << endl;
+	// }
+	// else{
+	// 	cout << "No loop is present in the linked list" << endl;
+	// }
+
+	if(floydCycleDetect(head) != NULL){
 		cout << "Loop is present in the linked list" << endl;
 	}
 	else{
