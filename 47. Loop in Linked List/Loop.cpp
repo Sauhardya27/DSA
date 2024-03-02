@@ -59,6 +59,17 @@ void InsertAtTail(Node* &h, Node* &t, int data){
 	t = temp;
 }
 
+Node* getStartingNode(Node* head){
+	Node* intersection = floydCycleDetect(head);
+	Node* slow = head;
+
+	while(slow != intersection){
+		slow = slow->next;
+		intersection = intersection->next;
+	}
+	return slow;
+}
+
 void print(Node *head) {
     while (head != NULL) {
         cout << head->data << " ";
@@ -78,7 +89,7 @@ int main(){
 	InsertAtTail(head, tail, 2);
 	// print(head);
 
-	tail->next = head->next->next;
+	// tail->next = head->next->next;
 
 	// if(detectLoop(head)){
 	// 	cout << "Loop is present in the linked list" << endl;
@@ -93,5 +104,7 @@ int main(){
 	else{
 		cout << "No loop is present in the linked list" << endl;
 	}
+
+	cout << "Starting node: " << getStartingNode(head)->data << endl;
 	return 0;
 }
