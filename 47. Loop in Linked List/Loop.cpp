@@ -1,0 +1,72 @@
+#include <iostream>
+#include <map>
+using namespace std;
+
+class Node{
+	public:
+	int data;
+	Node* next;
+
+	Node(int data){
+		this->data = data;
+		this->next = NULL;
+	}
+};
+
+bool detectLoop(Node* head){
+	if(head == NULL)
+		return false;
+
+	map <Node*, bool> visited;
+	Node* temp = head;
+
+	while(temp != NULL){
+		if(visited[temp] == true)
+			return true;
+
+		visited[temp] = true;
+		temp = temp->next;
+	}
+	return false;
+}
+
+void InsertAtTail(Node* &h, Node* &t, int data){
+	if(!h){
+		h = new Node(data);
+		t = h;
+		return;
+	}
+	Node* temp = new Node(data);
+	t->next = temp;
+	t = temp;
+}
+
+void print(Node *head) {
+    while (head != NULL) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+    cout << endl;
+}
+
+int main(){
+	Node *head, *tail;
+	head = tail = NULL;
+	InsertAtTail(head, tail, 5);
+	InsertAtTail(head, tail, 4);
+	InsertAtTail(head, tail, 3);
+	InsertAtTail(head, tail, 7);
+	InsertAtTail(head, tail, 9);
+	InsertAtTail(head, tail, 2);
+	// print(head);
+
+	// tail->next = head->next->next;
+
+	if(detectLoop(head)){
+		cout << "Loop is present in the linked list" << endl;
+	}
+	else{
+		cout << "No loop is present in the linked list" << endl;
+	}
+	return 0;
+}
