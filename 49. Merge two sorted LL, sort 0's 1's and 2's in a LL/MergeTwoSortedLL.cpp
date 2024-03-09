@@ -70,16 +70,16 @@ void InsertAtTail(Node* &h, Node* &t, int data) {
 }
 
 void print(Node* head) {
-  if (head == NULL) {
-    cout << "List is empty." << endl;
-    return;
-  }
+  	if (head == NULL) {
+    	cout << "List is empty." << endl;
+    	return;
+  	}
 
-  while (head != NULL) {
-    cout << head->data << " ";
-    head = head->next;
-  }
-  cout << endl;
+  	while (head != NULL) {
+    	cout << head->data << " ";
+    	head = head->next;
+  	}
+  	cout << endl;
 }
 
 int main(){
