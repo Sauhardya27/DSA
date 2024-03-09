@@ -38,29 +38,76 @@ void print(Node* head) {
 }
 
 //Using vector
-bool checkPalindrome(vector<int> arr){
-    int s = 0;
-    int e = arr.size() - 1;
-    while(s<=e){
-        if(arr[s] == arr[e]){
-            s++;
-            e--;
-        }
-        else{
+// bool checkPalindrome(vector<int> arr){
+//     int s = 0;
+//     int e = arr.size() - 1;
+//     while(s<=e){
+//         if(arr[s] == arr[e]){
+//             s++;
+//             e--;
+//         }
+//         else{
+//             return 0;
+//         }
+//     }
+//     return 1;
+// }
+
+// bool isPalindrome(Node* head){
+//     vector<int> arr;
+// 	Node* temp = head;
+// 	while(temp != NULL){
+// 		arr.push_back(temp->data);
+// 		temp = temp->next;
+// 	}
+// 	return checkPalindrome(arr);
+// }
+
+//Without using vector
+Node* getMiddle(Node* head){
+    Node* slow = head;
+    Node* fast = head -> next;
+        
+    while(fast != NULL && fast-> next != NULL) {
+        fast = fast -> next -> next;
+        slow = slow -> next;
+    }
+        
+    return slow;
+}
+    
+Node* reverse(Node* head){
+    Node* prev = NULL;
+    Node* curr = head;
+    Node* forward = NULL;
+        
+    while(curr != NULL){
+        forward = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = forward;
+    }
+    return prev;
+}
+
+bool isPalindrome(Node *head){
+    if (head->next == NULL)
+        return true;
+            
+    Node* curr = head;
+    Node* middle = getMiddle(head);
+    middle = middle->next;
+    middle = reverse(middle);
+        
+    while(middle != NULL){
+        if(curr->data != middle->data)
             return 0;
+        else{
+            curr = curr->next;
+            middle = middle->next;
         }
     }
     return 1;
-}
-
-bool isPalindrome(Node* head){
-    vector<int> arr;
-	Node* temp = head;
-	while(temp != NULL){
-		arr.push_back(temp->data);
-		temp = temp->next;
-	}
-	return checkPalindrome(arr);
 }
 
 int main(){
