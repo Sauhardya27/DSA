@@ -69,7 +69,7 @@ void print(Node *head){
 	return cloneHead;
 }*/
 
-// In linear space Complexity
+// In constant space Complexity
 Node *copyList(Node *head){
 	// step 1: Create a Clone List
 	Node *cloneHead = NULL;
