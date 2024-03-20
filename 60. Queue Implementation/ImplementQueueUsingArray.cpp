@@ -54,6 +54,13 @@ public:
     else
       return arr[qFront];
   }
+
+  int qsize(){
+	if (isEmpty())
+      return -1;
+	
+	return rear-qFront;
+  }
 };
 
 int main(){
@@ -63,6 +70,7 @@ int main(){
 	q.enqueue(8);
 	q.enqueue(27);
 
+	cout << "Size = " << q.qsize() << endl;
 	if(q.isEmpty())
 		cout << "Queue is empty" << endl;
 	else
@@ -72,6 +80,7 @@ int main(){
 	int ans = q.dequeue();
 	ans = q.dequeue();
 
+	cout << "Size = " << q.qsize() << endl;
 	cout << "The element at the front of the queue is: " << q.front() << endl;
 	return 0;
 }
