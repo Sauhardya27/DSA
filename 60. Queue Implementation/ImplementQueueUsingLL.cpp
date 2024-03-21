@@ -32,7 +32,7 @@ class Queue{
 		void enqueue(int x){
 			Node* temp = new Node(x);
 
-			if(rear == NULL){
+			if(rear == NULL){//When queue is empty
 				qFront = rear = temp;
 				return;	
 			}
@@ -47,7 +47,7 @@ class Queue{
 				Node* temp = qFront;
 				qFront = qFront->next;
 
-				if(qFront == NULL)
+				if(qFront == NULL)//If a queue contains a single element then front becomes NULL, then rear should also be updated to NULL
 					rear = NULL;
 
 				delete temp;
