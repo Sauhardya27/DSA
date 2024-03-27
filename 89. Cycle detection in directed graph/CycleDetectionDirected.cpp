@@ -71,3 +71,39 @@ int main()
 
 	return 0;
 }
+
+//Optimized code
+/*
+bool isCyclicDFS(int node, vector<int> &nodeStates, vector<int> adj[]) {
+        nodeStates[node] = 1; // Mark as Visiting
+
+        for (auto neighbour : adj[node]) {
+            if (nodeStates[neighbour] == 1) {  // Cycle detected (back edge)
+                return true;
+            } else if (nodeStates[neighbour] == 0) {
+                bool cycleDetected = isCyclicDFS(neighbour, nodeStates, adj);
+                if (cycleDetected) {
+                    return true;
+                }
+            }
+        }
+
+        nodeStates[node] = 2; // Mark as Visited
+        return false;
+    }
+
+    // Function to detect cycle in a directed graph.
+    bool isCyclic(int V, vector<int> adj[]) {
+        vector<int> nodeStates(V, 0); // Initialize all nodes to Unvisited (0)
+
+        for (int i = 0; i < V; ++i) {
+            if (nodeStates[i] == 0) { // Explore unvisited nodes
+                if (isCyclicDFS(i, nodeStates, adj)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+*/
