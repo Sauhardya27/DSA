@@ -2,6 +2,7 @@
 using namespace std;
 int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
     unordered_map<int, list<int>> adj;
+	//Here we have subtracted one value from the edge vector because the indexing starts from 1
     for(int i=0; i<edges.size(); i++){
         int u = edges[i].first - 1;
         int v = edges[i].second - 1;
