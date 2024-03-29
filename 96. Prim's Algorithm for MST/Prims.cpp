@@ -28,6 +28,7 @@ vector<pair<pair<int, int>, int>> calculatePrimsMST(int n, int m, vector< vector
         int u;
 
         //Traversing all the n vertices, to fetch the min value
+		//You can reduce T.C. if you use min-heap (Priority queue) to fetch minimum element
         for(int v=1; v<=n; v++){
             if(mst[v] == false && key[v] < mini){
                 u = v;
