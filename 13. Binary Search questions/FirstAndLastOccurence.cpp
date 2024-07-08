@@ -48,6 +48,7 @@ pair<int, int> firstAndLastPosition(vector<int>& arr, int n, int k)
 }
 
 int main(){
+	//Note to find no. of occurence of an element in O(log n) time, occurence = last occurence - first occurence + 1
 	vector<int> arr1 = {0, 1, 1, 5};
 	pair<int, int> pos = firstAndLastPosition(arr1, 4, 1);
 	cout << "First occurence -> " << pos.first << " Second occurence -> " << pos.second << endl;
