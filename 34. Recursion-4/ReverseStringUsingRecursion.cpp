@@ -1,17 +1,18 @@
 #include <iostream>
 using namespace std;
 
-string reverse(int i, int j, string s){
-	if(i>j)
+string reverse(int i, string s){
+	int n = s.size();
+	if(i>n/2)
 		return s;
 	else{
-		swap(s[i], s[j]);
-		return reverse(i+1, j-1, s);
+		swap(s[i], s[n-i-1]);
+		return reverse(i+1, s);
 	}	
 }
 
 int main(){
 	string s = "abcde";
-	cout << "Reversed string: " << reverse(0, 4, s) << endl;
+	cout << "Reversed string: " << reverse(0, s) << endl;
 	return 0;
 }
