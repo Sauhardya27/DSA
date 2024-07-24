@@ -8,13 +8,13 @@ void solve(string digits, string output, int index, vector<string> &ans, string 
 		return;
 	}
 
-	int number = digits[index] - '0';
-	string value = mapping[number];
+	int number = digits[index] - '0'; //Extract the number and typecast it to int
+	string value = mapping[number]; //Extract the string mapped to the number
 
 	for (int i = 0; i < value.length(); i++){
 		output.push_back(value[i]);
 		solve(digits, output, index + 1, ans, mapping);
-		output.pop_back();
+		output.pop_back(); //Backtracking to the base case with empty string to consider the other cases too
 	}
 }
 
