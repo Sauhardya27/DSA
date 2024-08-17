@@ -4,6 +4,7 @@
 		"iostream": "cpp",
 		"valarray": "cpp",
 		"ostream": "cpp",
-		"regex": "cpp"
+		"regex": "cpp",
+		"vector": "cpp"
 	}
 }
