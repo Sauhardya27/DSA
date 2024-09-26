@@ -38,6 +38,25 @@ void takeInput(Node* &root){
 	}
 }
 
+pair<Node*, Node*> minAndMaxInBST(Node* root){
+	pair<Node*, Node*> p = make_pair(nullptr, nullptr);
+	if(root == NULL)
+		return p;
+
+	Node* temp = root;
+	while(temp->left != NULL)
+		temp = temp->left;
+
+	p.first = temp;
+
+	temp = root;
+	while(temp->right != NULL)
+		temp = temp->right;
+
+	p.second = temp;
+	return p;
+}
+
 void levelOrderTraversal(Node* root){
 	queue<Node*> q;
 	q.push(root);
@@ -69,5 +88,9 @@ int main(){
 
 	cout << "Level-order traversal of BST:" << endl;
 	levelOrderTraversal(root);
+
+	pair<Node*, Node*>p;
+	p = minAndMaxInBST(root);
+	cout << "Min element: " << p.first->data << ", Max element: " << p.second->data << endl;
 	return 0;
 }
