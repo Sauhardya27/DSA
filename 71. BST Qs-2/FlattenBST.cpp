@@ -17,29 +17,32 @@ public:
 	}
 };
 
-void storeInorder(Node* root, vector<Node*> &inorder){
+void storeInorder(Node* root, vector<int> &inorder){
     if(root == NULL)
         return;
 
     storeInorder(root->left, inorder);
-    inorder.push_back(root);
+    inorder.push_back(root->data);
     storeInorder(root->right, inorder);
 }
 
 Node* flatten(Node* root)
 {
-    vector<Node*> inorder;
+    vector<int> inorder;
     storeInorder(root, inorder);
+    int n = inorder.size();
 
-    for (size_t i = 0; i < inorder.size(); i++) {
-        inorder[i]->left = NULL;  // Set left child to NULL
-        // Set the right child to the next node in the vector
-        if (i + 1 < inorder.size()) {
-            inorder[i]->right = inorder[i + 1];
-        } else {
-            inorder[i]->right = NULL;  // Last node's right should be NULL
-        }
+    Node* newRoot = new Node(inorder[0]);
+    Node* curr = newRoot;
+
+    for(int i=1; i<n; i++){
+        Node* temp = new Node(inorder[i]);
+        curr->left = NULL;
+        curr->right = temp;
+        curr = temp;
     }
 
-    return inorder.empty() ? NULL : inorder[0];
+    curr->left = NULL;
+    curr->right = NULL;
+    return newRoot;
 }
