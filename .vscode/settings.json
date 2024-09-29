@@ -5,6 +5,7 @@
 		"valarray": "cpp",
 		"ostream": "cpp",
 		"regex": "cpp",
-		"vector": "cpp"
+		"vector": "cpp",
+		"climits": "cpp"
 	}
 }
