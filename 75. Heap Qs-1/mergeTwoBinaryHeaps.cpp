@@ -34,7 +34,7 @@ class Solution{
         for(int i=0; i<m; i++)
             sol.push_back(b[i]);
             
-        return buildMinHeap(sol);
+        return buildMaxHeap(sol);
     }
 };
 
