@@ -28,6 +28,8 @@ class Solution
         }
     }
 
+    // Here we assume that no. of elements in maxHeap is always greater than or equal to minHeap
+    // We can also assume the opposite, but that will be a less intuitive approach
     double getMedian()
     {
         if (maxHeap.size() == minHeap.size()) {
