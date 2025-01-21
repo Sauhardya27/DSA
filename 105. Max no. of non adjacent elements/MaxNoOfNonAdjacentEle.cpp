@@ -41,7 +41,9 @@ int solveTab(vector<int> &nums){
     dp[0] = nums[0];
 
     for(int i=1; i<n; i++){
-        int include = dp[i-2] + nums[i];
+        int include = nums[i];
+        if (i - 2 >= 0) // Only add dp[i-2] if it's valid
+            include += dp[i - 2];
         int exclude = dp[i-1] + 0;
         dp[i] = max(include, exclude);
     }
