@@ -31,7 +31,7 @@ int solveMem(vector<int> &num, int x, vector<int> &dp){
 
     int mini = INT_MAX;
     for(int i=0; i<num.size(); i++){
-        int ans = solveRec(num, x-num[i]);
+        int ans = solveMem(num, x-num[i], dp);
         if(ans != INT_MAX)
             mini = min(mini, ans+1);//Add 1 considering the current element
     }

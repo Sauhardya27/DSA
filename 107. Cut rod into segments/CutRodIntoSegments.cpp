@@ -52,6 +52,7 @@ int solveTab(int n, int x, int y, int z){
 	return dp[n];
 }
 
+// Further space optimization is not possible
 int cutSegments(int n, int x, int y, int z) {
 	// int ans = solve(n, x, y, z);
 
